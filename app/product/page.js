@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import ProductCard from "../components/Product/ProductCard";
+import ProductParams from "./ProductParams";
 
 export default function ProductPage() {
   return (
