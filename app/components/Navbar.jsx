@@ -55,29 +55,6 @@ const navigation = {
             { name: 'Gowns', href: '#' },
           ],
         },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
-          ],
-        },
       ],
     },
     {
@@ -111,28 +88,6 @@ const navigation = {
             { name: 'Activewear', href: '#' },
           ],
         },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-          ],
-        },
       ],
     },
   ],
@@ -148,8 +103,6 @@ export default function Navbar() {
   const addToCart = (product) => {
     const updatedCart = [...cart, product];
     setCart(updatedCart);
-
-    // Save to localStorage
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   useEffect(() => {
@@ -207,21 +160,18 @@ export default function Navbar() {
                           <img
                             alt={item.imageAlt}
                             src={item.imageSrc}
-                            className="aspect-square w-full h-auto object-cover object-top rounded-lg bg-gray-100  group-hover:opacity-75"
+                            className="aspect-square w-full h-auto object-cover object-top rounded-lg bg-gray-100  group-hover:opacity-90"
                           />
                           <a href={item.href} className="mt-6 block font-medium text-gray-900">
                             <span aria-hidden="true" className="absolute inset-0 z-10" />
                             {item.name}
                           </a>
-                          <p aria-hidden="true" className="mt-1">
-                            Shop now
-                          </p>
                         </div>
                       ))}
                     </div>
                     {category.sections.map((section) => (
                       <div key={section.name}>
-                        <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900">
+                        <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900 ">
                           {section.name}
                         </p>
                         <ul
@@ -231,7 +181,7 @@ export default function Navbar() {
                         >
                           {section.items.map((item) => (
                             <li key={item.name} className="flow-root">
-                              <Link href={item.href} className="-m-2 block p-2 text-gray-500">
+                              <Link href={item.href} className="-m-2 block p-2 text-gray-500 hover:text-gray-700">
                                 {item.name}
                               </Link>
                             </li>
@@ -243,21 +193,10 @@ export default function Navbar() {
                 ))}
               </TabPanels>
             </TabGroup>
-
-            <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-              {navigation.pages.map((page) => (
-                <div key={page.name} className="flow-root">
-                  <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
-                    {page.name}
-                  </a>
-                </div>
-              ))}
-            </div>
-
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               <div className="flow-root">
-                <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                  Sign in
+                <a href="#">
+                  <Avatar alt="Anu" src="/path-to-avatar.jpg" className="w-8 h-8 cursor-pointer bg-pink-400" />
                 </a>
               </div>
             </div>
@@ -326,7 +265,7 @@ export default function Navbar() {
                                     <img
                                       alt={item.imageAlt}
                                       src={item.imageSrc}
-                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75 object-top"
+                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-90 "
                                     />
                                     <Link href={item.href} className="mt-6 block font-medium text-gray-900">
                                       <span aria-hidden="true" className="absolute inset-0 z-10" />
