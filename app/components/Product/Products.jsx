@@ -113,12 +113,12 @@ const Products = ({ filters, onProductClick }) => {
                 {currentProducts.map((product) => (
                   <a
                     key={product.id}
-                    onClick={() => onProductClick(product.id)}
                     className="group block rounded-lg border border-gray-200 bg-white p-4 shadow-md transition-transform duration-300 hover:ease-out hover:scale-105"
                   >
                     <img
                       alt={product.imageAlt}
                       src={product.imageSrc}
+                      onClick={() => onProductClick(product.id)}
                       className="w-full rounded-md bg-gray-200 object-cover object-top aspect-[2/3]"
                     />
                     <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
@@ -127,15 +127,8 @@ const Products = ({ filters, onProductClick }) => {
                         {product.price}{' '}
                         <span className="line-through text-gray-400">{product.cross}</span>
                         <br />
-                        <span className="text-green-500 text-sm">{product.discount} off</span>
+                        <span className="text-green-500 text-sm">{product.discount.replace(" or More", "")} off</span>
                       </p>
-                      <button onClick={() => addToCart(product)}>
-                        {cart.some((item) => item.id === product.id) ? (
-                          <ShoppingCart />
-                        ) : (
-                          <ShoppingCartOutlined className="w-5 h-5 text-gray-400 hover:fill-gray-600 mt-5"/>
-                        )}
-                      </button>
                     </div>
                   </a>
                 ))}
