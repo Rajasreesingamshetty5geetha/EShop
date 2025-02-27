@@ -1,19 +1,17 @@
-'use client';
-import { Suspense } from "react";
+"use client"; 
+
 import { useSearchParams } from "next/navigation";
 
 const ProductPage = () => {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ProductContent />
-      </Suspense>
+      <ProductContent />
     </div>
   );
 };
 
 function ProductContent() {
-  const searchParams = useSearchParams(); // Now inside Suspense
+  const searchParams = useSearchParams();
   const paramValue = searchParams.get("someParam");
 
   return <div>Product Page - Param: {paramValue}</div>;
