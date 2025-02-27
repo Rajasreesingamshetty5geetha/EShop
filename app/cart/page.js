@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import Cart from "../components/Cart/Cart";
 
-export default function CartPage() {
+function CartPage() {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
@@ -11,3 +11,10 @@ export default function CartPage() {
     </div>
   );
 }
+function CartContent() {
+  const searchParams = useSearchParams(); // Now inside Suspense
+  const paramValue = searchParams.get("someParam");
+
+  return <div>Cart Page - Param: {paramValue}</div>;
+}
+export default CartPage;
