@@ -265,7 +265,7 @@ export default function Navbar() {
                                     <img
                                       alt={item.imageAlt}
                                       src={item.imageSrc}
-                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-90 "
+                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover object-top group-hover:opacity-90 "
                                     />
                                     <Link href={item.href} className="mt-6 block font-medium text-gray-900">
                                       <span aria-hidden="true" className="absolute inset-0 z-10" />
@@ -324,14 +324,6 @@ export default function Navbar() {
                     <Avatar alt="Anu" src="/path-to-avatar.jpg" className="w-8 h-8 cursor-pointer bg-pink-400" />
                   </a>
                   <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                </div>
-
-                {/* Search */}
-                <div className="flex lg:ml-6">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">Search</span>
-                    <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
-                  </a>
                 </div>
 
                 {/* Cart */}
