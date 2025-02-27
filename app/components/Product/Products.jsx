@@ -119,7 +119,7 @@ const Products = ({ filters, onProductClick }) => {
                       alt={product.imageAlt}
                       src={product.imageSrc}
                       onClick={() => onProductClick(product.id)}
-                      className="w-full rounded-md bg-gray-200 object-cover object-top aspect-[2/3]"
+                      className="w-full rounded-md bg-gray-200 object-cover object-top aspect-[2/3] cursor-pointer"
                     />
                     <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                     <div className="flex flex-row justify-between">
