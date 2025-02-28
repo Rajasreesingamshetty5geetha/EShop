@@ -9,10 +9,9 @@ import Link from "next/link";
 const Cart = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const category = searchParams.get('category') || ''; // Get category from URL
+  const category = searchParams.get('category') || ''; 
   const [cart, setCart] = useState([]);
 
-  // Merge all product categories into a single array
   const allProducts = Object.values(products).flat();
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const Cart = () => {
     const updatedCart = storedCart.map((cartItem) => {
       const productDetails = allProducts.find((p) => p.id === cartItem.id);
       return productDetails ? { ...productDetails, quantity: cartItem.quantity } : null;
-    }).filter(Boolean); // Remove null values if product not found
+    }).filter(Boolean); 
 
     setCart(updatedCart);
   }, []);
