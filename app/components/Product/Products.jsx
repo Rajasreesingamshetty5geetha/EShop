@@ -66,7 +66,8 @@ const Products = ({ filters, onProductClick }) => {
       matchesPrice &&
       (filters.colors.length === 0 || filters.colors.includes(product.color)) &&
       (filters.sizes.length === 0 || filters.sizes.includes(product.size)) &&
-      (filters.discounts.length === 0 || filters.discounts.includes(product.discount))
+      (filters.discounts.length === 0 || 
+       filters.discounts.some(discount => product.discount >= discount))
     );
   });
 
@@ -117,7 +118,7 @@ const Products = ({ filters, onProductClick }) => {
         </div>
         <button className='relative' onClick={() => window.open('/cart', '_blank')}>
           {cart.length > 0 && (
-            <div className="absolute top-8 ml-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            <div className="absolute top-1 ml-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
               {cart.length}
             </div>
           )}
