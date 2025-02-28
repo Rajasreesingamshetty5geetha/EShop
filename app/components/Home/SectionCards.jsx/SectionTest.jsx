@@ -68,24 +68,25 @@ const SectionSlider = ({ products }) => {
             {/* Product Cards */}
             <div
                 ref={containerRef}
-                className="flex overflow-hidden gap-4 scroll-smooth py-10 px-8 bg-pink-500 rounded-sm"
+                className="flex overflow-hidden gap-4 scroll-smooth py-10 px-8 bg-pink-500 rounded-sm h-[280px]"
             >
                 {products.map((product) => (
                     <div
                         key={product.id}
-                        className='min-w-[200px] w-[200px] h-[300px] bg-white p-4 rounded-lg shadow-md  flex flex-col justify-center hover:scale-105 hover:shadow-2xl transition-transform duration-300'
+                        className="min-w-[150px] w-[160px] sm:w-[150px] md:w-[170px] lg:w-[220px] h-[220px] bg-white p-3 rounded-lg shadow-md flex flex-col justify-between hover:scale-105 hover:shadow-2xl transition-transform duration-300"
                     >
                         <img
                             src={product.image}
                             alt={product.brand}
-                            className='w-full h-full object-cover rounded-md aspect-square object-top hover:opacity-95 opacity-85 transition-opacity duration-300'
+                            className="w-full h-auto max-h-32 object-cover rounded-md aspect-square object-top hover:opacity-95 opacity-85 transition-opacity duration-300"
                         />
-                        <div className='flex flex-grow flex-col justify-end'>
-                            <h3 className='text-lg font-medium text-gray-900 mt-2'>{product.brand}</h3>
-                            <p className="desc">{product.desc}</p>
+                        <div className="flex flex-col justify-end flex-grow-0">
+                            <h3 className="text-sm font-medium text-gray-900 mt-2">{product.brand}</h3>
+                            <p className="text-xs text-gray-600 line-clamp-2">{product.desc}</p>
                         </div>
                     </div>
                 ))}
+
             </div>
 
             {/* Right Arrow */}
