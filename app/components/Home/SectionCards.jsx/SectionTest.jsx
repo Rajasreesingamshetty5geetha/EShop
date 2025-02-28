@@ -27,7 +27,7 @@ const SectionSlider = ({ products }) => {
 
     const scroll = (direction) => {
         if (containerRef.current) {
-            const scrollAmount = 900;
+            const scrollAmount = 200;
             containerRef.current.scrollBy({
                 left: direction === "left" ? -scrollAmount : scrollAmount,
                 behavior: 'smooth',
