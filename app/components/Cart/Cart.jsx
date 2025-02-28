@@ -4,6 +4,7 @@ import { ArrowBack } from "@mui/icons-material";
 import { useRouter } from 'next/navigation';
 import { products } from "../Product/ProductsData";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const Cart = () => {
   const router = useRouter();
@@ -25,39 +26,35 @@ const Cart = () => {
     setCart(updatedCart);
   }, []);
 
-  // Function to calculate discounted price
   const getDiscountedPrice = (crossPrice, discount) => {
     const numericCrossPrice = Number(crossPrice.replace(/[^0-9.]/g, ""));
     const numericDiscount = parseFloat(discount);
     if (!isNaN(numericCrossPrice) && !isNaN(numericDiscount)) {
       return numericCrossPrice - (numericDiscount / 100) * numericCrossPrice;
     }
-    return numericCrossPrice; // If invalid, return original price
+    return numericCrossPrice;
   };
 
-  // Remove product from cart
+
   const removeFromCart = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart.map(({ id, quantity }) => ({ id, quantity }))));  
+    localStorage.setItem('cart', JSON.stringify(updatedCart.map(({ id, quantity }) => ({ id, quantity }))));
   };
 
-  // Handle quantity change
   const updateQuantity = (id, newQty) => {
     const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, quantity: newQty } : item
     );
     setCart(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart.map(({ id, quantity }) => ({ id, quantity }))));  
+    localStorage.setItem('cart', JSON.stringify(updatedCart.map(({ id, quantity }) => ({ id, quantity }))));
   };
 
-  // Calculate subtotal using discounted price
   const subtotal = cart.reduce((total, item) => {
     const discountedPrice = getDiscountedPrice(item.cross, item.discount);
     return total + discountedPrice * item.quantity;
   }, 0);
 
-  // Calculate total discount dynamically
   const totalDiscount = cart.reduce((discountTotal, item) => {
     const numericCrossPrice = Number(item.cross.replace(/[^0-9.]/g, ""));
     const numericDiscount = parseFloat(item.discount);
@@ -67,13 +64,12 @@ const Cart = () => {
     return discountTotal + itemDiscount;
   }, 0);
 
-  // Additional charges
-  const shipping = 0; // Free shipping
-  const tax = subtotal * 0.08; // 8% tax estimate
 
-  // Final total calculation
+  const shipping = 0;
+  const tax = subtotal * 0.08;
+
   const orderTotal = subtotal + tax;
-  const savings = totalDiscount; // Total savings  
+  const savings = totalDiscount;
 
   return (
     <div className="max-w-full mx-auto p-6 bg-white">
@@ -82,7 +78,9 @@ const Cart = () => {
         {/* Cart Items */}
         <div className="col-span-2 space-y-4">
           {cart.length === 0 ? (
-            <p className="text-gray-600">Your cart is empty.</p>
+            <p className="text-gray-600">
+              Your cart is empty. <Link href="/" className="text-blue-400">Start Shopping⬅️🛒 </Link>
+            </p>
           ) : (
             cart.map((item) => {
               const discountedPrice = getDiscountedPrice(item.cross, item.discount);
@@ -109,7 +107,6 @@ const Cart = () => {
                       <option key={qty} value={qty}>{qty}</option>
                     ))}
                   </select>
-                  {/* Remove Button */}
                   <button onClick={() => removeFromCart(item.id)} className="ml-4 text-gray-500 cursor-pointer">✖</button>
                 </div>
               );
