@@ -118,7 +118,7 @@ const Cart = () => {
           <h2 className="text-lg font-semibold text-gray-900">Order Summary</h2>
           <div className="mt-4 space-y-2">
             <div className="flex justify-between text-gray-600">
-              <span>Subtotal</span>
+              <span>Price</span>
               <span>₹{subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-green-600">
