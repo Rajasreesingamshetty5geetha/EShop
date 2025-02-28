@@ -136,7 +136,7 @@ export default function Navbar() {
 
 
   return (
-    <div className="bg-white sticky ">
+    <div className="bg-white  ">
       {/* Mobile menu */}
       <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
         <DialogBackdrop
