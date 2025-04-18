@@ -15,7 +15,7 @@ const Homecarousel = () => {
         showThumbs={false}
         showStatus={false}
         dynamicHeight={false}
-        showArrows={false}
+        showArrows={true}
       >
         {HomecarouselData.map((item, index) => (
           <a key={index} href={item.href} className="block">
